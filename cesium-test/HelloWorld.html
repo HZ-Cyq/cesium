@@ -22,13 +22,40 @@
         margin: 0;
         padding: 0;
         overflow: hidden;
+        /* 不占据空间，无法点击 */
+        .cesium-viewer-toolbar,
+        /* 右上角按钮组 */
+        .cesium-viewer-animationContainer,
+        /* 左下角动画控件 */
+        .cesium-viewer-timelineContainer 
+        /* 时间线 */
+        .cesium-viewer-bottom
+        {
+          display: none;
+        }
+        .cesium-viewer-fullscreenContainer {
+          position: absolute; top: -999em;
+        }
       }
     </style>
   </head>
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      const viewer = new Cesium.Viewer("cesiumContainer");
+      const viewer = new Cesium.Viewer("cesiumContainer", {
+        // 隐藏界面中的元素
+        // geocoder: false,
+        // homeButton: false,
+        // sceneModePicker: false,
+        // baseLayerPicker: false,
+        // navigationHelpButton: false,
+        // animation: false,
+        // creditContainer: "cesiumContainer",
+        // timeline: false,
+        // fullscreenButton: false,
+        // vrButton: false,
+      });
+      viewer.scene.debugShowFramesPerSecond = "true";
     </script>
   </body>
 </html>
